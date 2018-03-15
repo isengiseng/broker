@@ -1,0 +1,82 @@
+{
+  "name": "InputData",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "KODEH2H": {
+      "type": "string",
+      "required": true
+    },
+    "USER_ID": {
+      "type": "string",
+      "required": true
+    },
+    "PASSWORD": {
+      "type": "string",
+      "required": true
+    },
+    "CAB": {
+      "type": "string",
+      "required": true
+    },
+    "PK": {
+      "type": "string",
+      "required": true
+    },
+    "NOREK": {
+      "type": "string",
+      "required": true
+    },
+    "NAMA": {
+      "type": "string",
+      "required": true
+    },
+    "LAHIR": {
+      "type": "string",
+      "required": true
+    },
+    "BUKA": {
+      "type": "string",
+      "required": true
+    },
+    "TEMPO": {
+      "type": "string",
+      "required": true
+    },
+    "PLAN": {
+      "type": "string",
+      "required": true
+    },
+    "AMOUNT": {
+      "type": "string",
+      "required": true
+    },
+    "ID": {
+      "type": "string",
+      "required": true
+    },
+    "KTP": {
+      "type": "string",
+      "required": true
+    },
+    "RATE": {
+      "type": "string",
+      "required": true
+    },
+    "SEX": {
+      "type": "string",
+      "required": true
+    },
+    "RATE_ASURANSI": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

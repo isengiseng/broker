@@ -1,0 +1,26 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "CEK_KOMUNIKASI": {
+    "host": "localhost",
+    "port": 1433,
+    "url": "",
+    "database": "BROKER",
+    "password": "zenhuw",
+    "name": "CEK_KOMUNIKASI",
+    "user": "zenhuw",
+    "connector": "mssql"
+  },
+  "PK_POST": {
+    "host": "localhost",
+    "port": 1433,
+    "url": "",
+    "database": "BROKER",
+    "password": "zenhuw",
+    "name": "PK_POST",
+    "user": "zenhuw",
+    "connector": "mssql"
+  }
+}
