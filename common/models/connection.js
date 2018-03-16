@@ -13,18 +13,19 @@ module.exports = function(cek_komunikasi) {
         where: {
           and: [
             { KODEH2H: req.kodeh2h.trim() },
-            { USER_ID: req.username.trim() },
+            { USERNAME: req.username.trim() },
             { PASSWORD: pwMd5 }
           ]
         }
       },
       (err, res) => {
         if (util.isNullOrUndefined(res[0])) {
+          
           var data = {
-            name: "error",
-            status: "404",
+            statusCode: "404",
             message: "You dont have permission to access this service"
           };
+          
           cb(data);
         } else {
           var data = {

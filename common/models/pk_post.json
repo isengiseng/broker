@@ -10,7 +10,7 @@
       "type": "string",
       "required": true
     },
-    "USER_ID": {
+    "USERNAME": {
       "type": "string",
       "required": true,
       "id": true

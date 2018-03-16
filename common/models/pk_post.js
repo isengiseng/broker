@@ -4,12 +4,12 @@ var moment = require("moment");
 var md5 = require("md5");
 module.exports = function(pk_post) {
   pk_post.inputdata = function(req, cb) {
-    var encMd5 = md5(req.userid.trim() + req.password.trim() + moment());
+    var encMd5 = md5(req.username.trim() + req.password.trim() + moment());
     var pwMd5 = md5(req.password.trim());
     pk_post.create(
       {
         KODEH2H: encMd5,
-        USER_ID: req.userid.trim(),
+        USERNAME: req.username.trim(),
         PASSWORD: pwMd5,
         CAB: req.cab,
         PK: req.pk,
@@ -38,10 +38,10 @@ module.exports = function(pk_post) {
           cb(null, data);
         } else {
           var data = {
-            name: "error",
-            status: "404",
+            statusCode: "404",
             message: "You dont have permission to access this service"
           };
+
           cb(data);
         }
       }
