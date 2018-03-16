@@ -14,7 +14,14 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "db",
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false
+        }
+      }
+    }
   },
   "AccessToken": {
     "dataSource": "db",
@@ -35,12 +42,28 @@
     "dataSource": "db",
     "public": false
   },
-  "connection": {
+  "cek_komunikasi": {
     "dataSource": "CEK_KOMUNIKASI",
-    "public": true
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false,
+          "loginuser": true
+        }
+      }
+    }
   },
-  "InputData": {
+  "pk_post": {
     "dataSource": "PK_POST",
-    "public": true
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false,
+          "inputdata": true
+        }
+      }
+    }
   }
 }

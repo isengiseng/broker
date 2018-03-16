@@ -1,55 +1,58 @@
-'use strict';
-var util = require('util');
+"use strict";
+var util = require("util");
+var md5 = require("md5");
+module.exports = function(cek_komunikasi) {
+  cek_komunikasi.loginuser = function(req, cb) {
 
-module.exports = function (Connection) {
-  var app = require('../../server/server');
-  Connection.loginuser = function (req, cb) {
-    console.log(JSON.stringify(req))
-    Connection.find({
-      where: {
-        KODEH2H: req.kodeh2h,
-        USERNAME: req.username,
-        PASSWORD: req.password
-      }
-    }, (err, res) => {
-      if (util.isNullOrUndefined(res[0])) {
-        var data = {
-          name: "error",
-          status: "404",
-          message: "You dont have permission to access this service"
+    var app = require("../../server/server");
+    var pk_post = app.models.pk_post;
+
+    var pwMd5 = md5(req.password.trim());
+    pk_post.find(
+      {
+        where: {
+          and: [
+            { KODEH2H: req.kodeh2h.trim() },
+            { USER_ID: req.username.trim() },
+            { PASSWORD: pwMd5 }
+          ]
         }
-        cb(data)
-
-      } else {
-        var data = {
-          status: "200",
-          message: "Koneksi OK"
-        }
-
-        cb(null, data);
-      }
-    })
-  }
-
-  Connection.remoteMethod(
-    'loginuser', {
-        accepts: [
-            {
-          arg: 'cek komunikasi',
-          type: 'Object',
-          http: { source: 'body' }
-        }
-      ],
-      http: {
-        path: '/auth',
-        verb: 'post',
-
       },
-      returns: {
-        arg: 'data',
-        type: 'object'
-      }
-    }
-  )
+      (err, res) => {
+        if (util.isNullOrUndefined(res[0])) {
+          var data = {
+            name: "error",
+            status: "404",
+            message: "You dont have permission to access this service"
+          };
+          cb(data);
+        } else {
+          var data = {
+            status: "200",
+            message: "Koneksi OK"
+          };
 
+          cb(null, data);
+        }
+      }
+    );
+  };
+
+  cek_komunikasi.remoteMethod("loginuser", {
+    accepts: [
+      {
+        arg: "cekkomunikasi",
+        type: "Object",
+        http: { source: "body" }
+      }
+    ],
+    http: {
+      path: "/auth",
+      verb: "post"
+    },
+    returns: {
+      arg: "data",
+      type: "object"
+    }
+  });
 };

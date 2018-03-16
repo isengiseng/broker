@@ -1,5 +1,5 @@
 {
-  "name": "InputData",
+  "name": "pk_post",
   "base": "PersistedModel",
   "idInjection": false,
   "options": {
@@ -12,7 +12,8 @@
     },
     "USER_ID": {
       "type": "string",
-      "required": true
+      "required": true,
+      "id": true
     },
     "PASSWORD": {
       "type": "string",
@@ -73,10 +74,21 @@
     "RATE_ASURANSI": {
       "type": "string",
       "required": true
+    },
+    "DATE_CREATED": {
+      "type": "date",
+      "required": true
+    },
+    "DATE_MODIFIED": {
+      "type": "date",
+      "required": true
     }
   },
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {},
+  "http": {
+    "path": "/input_data"
+  }
 }

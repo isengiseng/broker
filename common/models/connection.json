@@ -1,5 +1,5 @@
 {
-  "name": "connection",
+  "name": "cek_komunikasi",
   "base": "PersistedModel",
   "idInjection": false,
   "options": {
@@ -10,9 +10,10 @@
       "type": "string",
       "required": true
     },
-    "USERNAME": {
+    "USER_ID": {
       "type": "string",
-      "required": true
+      "required": true,
+      "id": true
     },
     "PASSWORD": {
       "type": "string",
@@ -22,5 +23,8 @@
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {},
+  "http": {
+    "path": "/connection"
+  }
 }
