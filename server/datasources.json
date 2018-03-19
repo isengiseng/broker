@@ -22,5 +22,15 @@
     "name": "PK_POST",
     "user": "zenhuw",
     "connector": "mssql"
+  },
+  "AUTH_API": {
+    "host": "localhost",
+    "port": 1433,
+    "url": "",
+    "database": "BROKER",
+    "password": "zenhuw",
+    "name": "AUTH_API",
+    "user": "zenhuw",
+    "connector": "mssql"
   }
 }

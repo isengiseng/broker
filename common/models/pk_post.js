@@ -2,11 +2,11 @@
 var util = require("util");
 var moment = require("moment");
 var md5 = require("md5");
-module.exports = function(pk_post) {
-  pk_post.inputdata = function(req, cb) {
+module.exports = function(PK_POST) {
+  PK_POST.inputdata = function(req, cb) {
     var encMd5 = md5(req.username.trim() + req.password.trim() + moment());
     var pwMd5 = md5(req.password.trim());
-    pk_post.create(
+    PK_POST.create(
       {
         KODEH2H: encMd5,
         USERNAME: req.username.trim(),
@@ -26,7 +26,8 @@ module.exports = function(pk_post) {
         SEX: req.sex,
         RATE_ASURANSI: req.rate_asuransi,
         DATE_CREATED: moment(),
-        DATE_MODIFIED: moment()
+        DATE_MODIFIED: moment(),
+        NO: req.no
       },
       (err, res) => {
         if (util.isNullOrUndefined(err)) {
@@ -48,7 +49,7 @@ module.exports = function(pk_post) {
     );
   };
 
-  pk_post.remoteMethod("inputdata", {
+  PK_POST.remoteMethod("inputdata", {
     accepts: [
       {
         arg: "inputdata",
@@ -65,4 +66,27 @@ module.exports = function(pk_post) {
       type: "object"
     }
   });
+
+  PK_POST.getall = function (cb) {
+
+
+    PK_POST.find({}, function (err, data) {
+      cb(null, data)
+      
+    })
+  };
+
+
+  PK_POST.remoteMethod(
+    'getall', {
+      http: {
+        path: '/all',
+        verb: 'get'
+      },
+      returns: {
+        arg: 'data',
+        type: 'object'
+      }
+    }
+  )
 };

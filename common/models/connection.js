@@ -5,10 +5,11 @@ module.exports = function(cek_komunikasi) {
   cek_komunikasi.loginuser = function(req, cb) {
 
     var app = require("../../server/server");
-    var pk_post = app.models.pk_post;
+    var AUTH_API = app.models.AUTH_API;
 
     var pwMd5 = md5(req.password.trim());
-    pk_post.find(
+    
+    AUTH_API.find(
       {
         where: {
           and: [
@@ -56,4 +57,5 @@ module.exports = function(cek_komunikasi) {
       type: "object"
     }
   });
+  
 };

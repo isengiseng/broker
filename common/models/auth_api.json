@@ -1,12 +1,9 @@
 {
-  "name": "cek_komunikasi",
+  "name": "AUTH_API",
   "base": "PersistedModel",
   "idInjection": false,
   "options": {
     "validateUpsert": true
-  },
-  "http": {
-    "path": "/connection"
   },
   "properties": {
     "KODEH2H": {
@@ -15,11 +12,22 @@
     },
     "USERNAME": {
       "type": "string",
-      "id": true,
       "required": true
     },
     "PASSWORD": {
       "type": "string",
+      "required": true
+    },
+    "LAST_ACCESS": {
+      "type": "date",
+      "required": true
+    },
+    "DATE_CREATED": {
+      "type": "date",
+      "required": true
+    },
+    "DATE_MODIFIED": {
+      "type": "date",
       "required": true
     }
   },
