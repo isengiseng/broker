@@ -1,23 +1,28 @@
 {
   "name": "PK_POST",
   "base": "PersistedModel",
-  "idInjection": false,
   "options": {
-    "validateUpsert": true
+    "validateUpsert": false
   },
   "http": {
-    "path": "/input_data"
+    "path": "/inputdata"
   },
   "properties": {
+    "NO": {
+      "type": "Number",
+      "id": true,
+      "generated": true,
+      "idInjection": true
+    },
     "KODEH2H": {
       "type": "string",
       "required": true
     },
     "USERNAME": {
       "type": "string",
-      "id": true,
       "required": true
     },
+
     "PASSWORD": {
       "type": "string",
       "required": true
@@ -55,10 +60,10 @@
       "required": true
     },
     "AMOUNT": {
-      "type": "string",
+      "type": "number",
       "required": true
     },
-    "ID": {
+    "ID_NO": {
       "type": "string",
       "required": true
     },
@@ -67,7 +72,7 @@
       "required": true
     },
     "RATE": {
-      "type": "string",
+      "type": "number",
       "required": true
     },
     "SEX": {
@@ -78,16 +83,12 @@
       "type": "string",
       "required": true
     },
-    "DATETIME_CREATED": {
+    "DATE_CREATED": {
       "type": "date",
       "required": true
     },
-    "DATETIME_MODIFIED": {
+    "DATE_MODIFIED": {
       "type": "date",
-      "required": true
-    },
-    "NO": {
-      "type": "INT",
       "required": true
     }
   },

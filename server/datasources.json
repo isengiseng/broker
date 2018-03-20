@@ -32,5 +32,15 @@
     "name": "AUTH_API",
     "user": "zenhuw",
     "connector": "mssql"
+  },
+  "AUTH_SERVER": {
+    "host": "localhost",
+    "port": 1433,
+    "url": "",
+    "database": "BROKER",
+    "password": "zenhuw",
+    "name": "AUTH_SERVER",
+    "user": "zenhuw",
+    "connector": "mssql"
   }
 }

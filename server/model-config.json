@@ -62,13 +62,32 @@
         "sharedMethods": {
           "*": false,
           "inputdata": true,
-          "getall": true
+          "getAll": true
         }
       }
     }
   },
   "AUTH_API": {
     "dataSource": "AUTH_API",
-    "public": true
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false,
+          "getdata": true
+        }
+      }
+    }
+  },
+  "AUTH_SERVER": {
+    "dataSource": "AUTH_SERVER",
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false
+        }
+      }
+    }
   }
 }

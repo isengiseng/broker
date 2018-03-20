@@ -1,23 +1,15 @@
 {
-  "name": "AUTH_API",
+  "name": "AUTH_SERVER",
   "base": "PersistedModel",
   "idInjection": false,
   "options": {
     "validateUpsert": true
   },
-  "http": {
-    "path": "/auth_api"
-  },
   "properties": {
-    "KODEH2H": {
-      "type": "string",
-      "required": true,
-      "id": 1
-    },
     "USERNAME": {
       "type": "string",
       "required": true,
-      "id": 2
+      "id": 1
     },
     "PASSWORD": {
       "type": "string",
