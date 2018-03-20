@@ -8,12 +8,6 @@
     "path": "/inputdata"
   },
   "properties": {
-    "NO": {
-      "type": "Number",
-      "id": true,
-      "generated": true,
-      "idInjection": true
-    },
     "KODEH2H": {
       "type": "string",
       "required": true
@@ -33,7 +27,8 @@
     },
     "PK": {
       "type": "string",
-      "required": true
+      "required": true,
+      "id": true
     },
     "NOREK": {
       "type": "string",

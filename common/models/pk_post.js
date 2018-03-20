@@ -38,7 +38,7 @@ module.exports = function(PK_POST) {
 
         cb(data);
       } else {
-        PK_POST.create(
+        PK_POST.upsert(
           {
             KODEH2H: req.kodeh2h,
             USERNAME: req.username.trim(),
