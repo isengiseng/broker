@@ -46,7 +46,7 @@ module.exports = function(Authapi) {
               var ret = {
                 status: "200",
                 message: "Koneksi OK",
-                data: [{ AUTH_API: authData }, { PK_POST: data }]
+                data: { AUTH_API: authData,  PK_POST: data}
               };
               cb(null, ret);
             });

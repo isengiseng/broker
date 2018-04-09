@@ -23,12 +23,12 @@ module.exports = function(cek_komunikasi) {
       (err, res) => {
         console.log(err);
         if (util.isNullOrUndefined(res)) {
-          var data = {
+          var Result = {
             statusCode: "404",
             message: "You dont have permission to access this service"
           };
 
-          cb(data);
+          cb(Result);
         } else {
           AUTH_API.updateAll(
             {
@@ -48,12 +48,12 @@ module.exports = function(cek_komunikasi) {
             }
           );
 
-          var data = {
+          var Result = {
             status: "200",
             message: "Koneksi OK"
           };
 
-          cb(null, data);
+          cb(null, Result);
         }
       }
     );
@@ -72,7 +72,7 @@ module.exports = function(cek_komunikasi) {
       verb: "post"
     },
     returns: {
-      arg: "data",
+      arg: "Result",
       type: "object"
     }
   });

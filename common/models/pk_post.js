@@ -62,20 +62,20 @@ module.exports = function(PK_POST) {
           },
           (err, res) => {
             if (util.isNullOrUndefined(err)) {
-              var data = {
+              var Result = {
                 status: "200",
                 message: "Data sudah di input"
               };
 
-              cb(null, data);
+              cb(null, Result);
             } else {
               console.log(err);
-              var data = {
+              var Result = {
                 statusCode: "404",
                 message: "You dont have permission to access this service"
               };
 
-              cb(data);
+              cb(Result);
             }
           }
         );
@@ -96,7 +96,7 @@ module.exports = function(PK_POST) {
       verb: "post"
     },
     returns: {
-      arg: "data",
+      arg: "Result",
       type: "object"
     }
   });
