@@ -26,11 +26,15 @@ module.exports = function(PK_POST) {
         ]
       }
     };
+    var filterWherePost = {
+      where: {
+        and: [{ PK: req.pk }, { NOREK: req.norek }]
+      }
+    };
 
     AUTH_API.findOne(filterWhere, (err, res) => {
       console.log(res);
       if (util.isNullOrUndefined(res)) {
-        console.log("masuksini");
         var data = {
           statusCode: "404",
           message: "You dont have permission to access this service"
@@ -38,47 +42,95 @@ module.exports = function(PK_POST) {
 
         cb(data);
       } else {
-        PK_POST.upsert(
-          {
-            KODEH2H: req.kodeh2h,
-            USERNAME: req.username.trim(),
-            PASSWORD: pwMd5,
-            CAB: req.cab,
-            PK: req.pk,
-            NOREK: req.norek,
-            NAMA: req.nama,
-            LAHIR: req.lahir,
-            BUKA: req.buka,
-            TEMPO: req.tempo,
-            PLAN: req.plan,
-            AMOUNT: Number(req.amount),
-            ID_NO: req.id,
-            KTP: req.ktp,
-            RATE: Number(req.rate),
-            SEX: req.sex,
-            RATE_ASURANSI: req.rate_asuransi,
-            DATE_CREATED: moment(),
-            DATE_MODIFIED: moment()
-          },
-          (err, res) => {
-            if (util.isNullOrUndefined(err)) {
-              var Result = {
-                status: "200",
-                message: "Data sudah di input"
-              };
+        PK_POST.findOne(filterWherePost, (err, res) => {
+          if (res != null) {
+            console.log("here")
+            PK_POST.updateAll({ and: [{ PK: req.pk }, { NOREK: req.norek }]},
+              {
+                KODEH2H: req.kodeh2h,
+                USERNAME: req.username.trim(),
+                PASSWORD: pwMd5,
+                CAB: req.cab,
+                NAMA: req.nama,
+                LAHIR: req.lahir,
+                BUKA: req.buka,
+                TEMPO: req.tempo,
+                PLAN: req.plan,
+                AMOUNT: Number(req.amount),
+                ID_NO: req.id,
+                KTP: req.ktp,
+                RATE: Number(req.rate),
+                SEX: req.sex,
+                RATE_ASURANSI: req.rate_asuransi,
+                ASURANSI: req.asuransi,
+                DATE_CREATED: moment(),
+                DATE_MODIFIED: moment()
+              },
+              (err, res) => {
+                if (util.isNullOrUndefined(err)) {
+                  var Result = {
+                    status: "200",
+                    message: "Data sudah di input"
+                  };
 
-              cb(null, Result);
-            } else {
-              console.log(err);
-              var Result = {
-                statusCode: "404",
-                message: "You dont have permission to access this service"
-              };
+                  cb(null, Result);
+                } else {
+                  console.log(err);
+                  var Result = {
+                    statusCode: "404",
+                    message: "You dont have permission to access this service"
+                  };
 
-              cb(Result);
-            }
+                  cb(Result);
+                }
+              }
+            );
+          } else {
+            console.log("here2"+ req.pk)
+            PK_POST.create(
+              {
+                KODEH2H: req.kodeh2h,
+                USERNAME: req.username.trim(),
+                PASSWORD: pwMd5,
+                CAB: req.cab,
+                PK: req.pk,
+                NOREK: req.norek,
+                NAMA: req.nama,
+                LAHIR: req.lahir,
+                BUKA: req.buka,
+                TEMPO: req.tempo,
+                PLAN: req.plan,
+                AMOUNT: Number(req.amount),
+                ID_NO: req.id,
+                KTP: req.ktp,
+                RATE: Number(req.rate),
+                SEX: req.sex,
+                RATE_ASURANSI: req.rate_asuransi,
+                ASURANSI: req.asuransi,
+                DATE_CREATED: moment(),
+                DATE_MODIFIED: moment()
+              },
+              (err, res) => {
+                if (util.isNullOrUndefined(err)) {
+                  var Result = {
+                    status: "200",
+                    message: "Data sudah di input"
+                  };
+
+                  cb(null, Result);
+                } else {
+                  console.log(err);
+                  var Result = {
+                    statusCode: "404",
+                    message: "You dont have permission to access this service"
+                  };
+
+                  cb(Result);
+                }
+              }
+            );
           }
-        );
+        });
       }
     });
   };

@@ -4,6 +4,8 @@
   "options": {
     "validateUpsert": false
   },
+  "idInjection":false,
+  "forceId": false,
   "http": {
     "path": "/inputdata"
   },
@@ -28,11 +30,12 @@
     "PK": {
       "type": "string",
       "required": true,
-      "id": true
+      "id":1
     },
     "NOREK": {
       "type": "string",
-      "required": true
+      "required": true,
+      "id":2
     },
     "NAMA": {
       "type": "string",
@@ -75,6 +78,10 @@
       "required": true
     },
     "RATE_ASURANSI": {
+      "type": "string",
+      "required": true
+    },
+    "ASURANSI": {
       "type": "string",
       "required": true
     },
